@@ -28,15 +28,28 @@
         </p>
       </div>
       <div>
-        <form id="form" onsubmit="handleSubmit();" >
-          <input type="text"  placeholder="First Name" id="fName" required>
-          <input type="text"  placeholder="Last Name"  id="lName"required>
-          <input type="email" name="email" id="email" placeholder="Email Address"required>
-          <input type="password" name="password" id="password"placeholder="Password"required>
-          <input type="submit" value=" Claim your free trial " id="submitBtn">
+        <form id="form" action="#" onsubmit="handleSubmit();" >
+          <div class="input-control">
+            <input type="text"  placeholder="First Name" id="fName">
+            <small class="error"></small>
+          </div>
+          <div class="input-control ">
+            <input type="text"  placeholder="Last Name"  id="lName">
+            <small class="error"></small>
+          </div>
+          <div class=" input-control ">
+            <input type="email" name="email" id="email" placeholder="Email Address">
+            <small class="error"></small>
+          </div>
+          <div class="input-control">
+            <input type="password" name="password" id="password"placeholder="Password">
+            <small class="error"></small>
+          </div>
+          <button  id="submitBtn">Claim your free trial</button>
         </form>
         <p>
           By clicking the button, you are agreeing to our<span>Terms and Services</span> 
+        </p>
       </div>
     </main>
 
