@@ -1,66 +1,69 @@
-const fName= document.getElementById("fName");
-const lName= document.getElementById("lName");
+const firstName= document.getElementById("firstName");
+const lastName= document.getElementById("lastName");
 const email= document.getElementById("email");
 const password= document.getElementById("password");
+const form= document.getElementById("form");
 
+form.addEventListener("submit", handleSubmit);
 
 function handleSubmit(event){
     event.preventDefault();
     validateInputs();
-}
-function isValidEmail(email){
-    const mailFormat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-    return mailFormat.test(String(email).toLowerCase());//
-}
-function setError(input, message){
-    const inputControl = input.parentElement;
-    let errorDisplay = document.querySelector(".error");
 
-    errorDisplay.innerText = message;
+}
+function setError (input, message) {
+    const inputControl = input.parentElement;
+    const errorMessage = inputControl.querySelector(".errorM");
+
+    errorMessage.innerText = message;
     inputControl.classList.add("error");
     inputControl.classList.remove("success");
 }
-function setSuccess(input){
-    const inputControl = input.parentElement;
-    let errorDisplay = document.querySelector(".error");
-    
-    errorDisplay.innerText = "";
-    inputControl.classList.add("success");
-    inputControl.classList.remove("remove");
 
-    }
+function setSuccess (input) {
+    const inputControl = input.parentElement;
+    const errorMessage = inputControl.querySelector(".errorM");
+
+    errorMessage.innerText = "";
+    inputControl.classList.add("success");
+    inputControl.classList.remove("error");
+}
+
+function isValidEmail(email){
+    const format = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return format.test(String(email).toLowerCase());
+}
 
 function validateInputs(){
-    const fNameValue = fName.value.trim();
-    const lNameValue = lName.value.trim();
-    const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
+    const firstNameV = firstName.value.trim();
+    const lastNameV = lastName.value.trim();
+    const emailV = email.value.trim();
+    const passwordV = password.value.trim();
 
-    if(fNameValue === ""){
-        setError(fName, "This field cannot be blank!");
-    }else{
-        setSuccess(fName);
+    if(firstNameV === ""){
+        setError(firstName, "First name  cannot be empty!" );
+    } else {
+        setSuccess(firstName);
     }
 
-    if(lNameValue === ""){
-        setError(lName, "This field cannot be blank!");
-    }else{
-        setSuccess(lName);
+    if(lastNameV === ""){
+        setError(lastName, "Last name cannot be empty!" );
+    } else {
+        setSuccess(lastName);
     }
-
-    if(emailValue === ""){
-        setError(email, "This field cannot be blank!");
-    }else if(!isValidEmail(emailValue)){
+    if(emailV === ""){
+        setError(email, "Email cannot be empty!");
+    }else if(!isValidEmail(emailV)){
         setError(email, "Email not valid!");
     }else{
         setSuccess(email);
     }
-    
-    if(passwordValue === ""){
-        setError(password, "This field cannot be blank!");
-    }else if(passwordValue.length <8){
+    if(passwordV === ""){
+        setError(password, "Password cannot be empty!");
+    }else if(passwordV.length <8){
         setError(password, " Password Must be at least 8 characters!");
         }else{
         setSuccess(password);
     }
 }
+
